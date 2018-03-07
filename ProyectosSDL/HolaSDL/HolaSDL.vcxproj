@@ -14,7 +14,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -70,16 +70,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="AsteroidsManager.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="CircularMotionPhysics.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="DemoActor.cpp" />
     <ClCompile Include="ExampleGame.cpp" />
+    <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="ImageRenderer.cpp" />
+    <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Music.cpp" />
+    <ClCompile Include="Observable.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="PaddleWithAI.cpp" />
@@ -87,21 +94,30 @@
     <ClCompile Include="PaddleWithMouse.cpp" />
     <ClCompile Include="PaddleWithMouseWithTransRect.cpp" />
     <ClCompile Include="PaddleWithTransRect.cpp" />
+    <ClCompile Include="PhysicsComponent.cpp" />
+    <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="RotationInputComponent.cpp" />
     <ClCompile Include="SDLGame.cpp" />
     <ClCompile Include="SoundEffect.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="AsteroidsManager.h" />
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="CircularMotionPhysics.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="DemoActor.h" />
     <ClInclude Include="ExampleGame.h" />
+    <ClInclude Include="Fighter.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ImageRenderer.h" />
+    <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Messages.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Observer.h" />
@@ -111,7 +127,10 @@
     <ClInclude Include="PaddleWithMouse.h" />
     <ClInclude Include="PaddleWithMouseWithTransRect.h" />
     <ClInclude Include="PaddleWithTransRect.h" />
+    <ClInclude Include="PhysicsComponent.h" />
+    <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="Resources.h" />
+    <ClInclude Include="RotationInputComponent.h" />
     <ClInclude Include="SDLGame.h" />
     <ClInclude Include="sdl_includes.h" />
     <ClInclude Include="SoundEffect.h" />
