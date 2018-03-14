@@ -1,11 +1,12 @@
 #pragma once
+
 #include "GameObject.h"
-class BulletsManager
-{
+#include "Observable.h"
+#include "Observer.h"
+
+class BulletsManager : public Observable, public Observer {
 public:
 	BulletsManager();
-	~BulletsManager();
-	virtual void shoot(GameObject*o, Vector2D p, Vector2D v) = 0;
-
+	virtual ~BulletsManager();
+	virtual std::vector<Bullet*>& getBullets() = 0;
 };
-

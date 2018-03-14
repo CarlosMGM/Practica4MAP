@@ -1,11 +1,10 @@
 #include "AsteroidsManager.h"
-#include "Texture.h"
 
 
 AsteroidsManager::AsteroidsManager(SDLGame* game) : GameObject(game) 
 {
-	
-	//Resources::getImageTexture(Resources::ImageId::Astroid);
+	asteroidImage_ = getResources()->getImageTexture(Resources::Astroid);
+	initAsteroids();
 }
 
 

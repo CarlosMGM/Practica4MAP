@@ -21,7 +21,7 @@ private:
 	void initAsteroids();
 
 	vector<Asteroid*> asteroids_;
-	//ImageRenderer asteroidImage_;
+	ImageRenderer asteroidImage_ ;
 	CircularMotionPhysics circularPhysics_;
 	//RotationPhysics rotationPhysics_;
 	int numOfAsteroids_;
