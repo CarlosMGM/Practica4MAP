@@ -1,22 +1,15 @@
-#ifndef ROTATIONINPUTCOMPONENT_H_
-#define ROTATIONINPUTCOMPONENT_H_
-
+#pragma once
 #include "InputComponent.h"
-
-/*
-*
-*/
-class RotationInputComponent : public InputComponent {
+class RotationInputComponent :
+	public InputComponent
+{
 public:
-	RotationInputComponent(SDL_Keycode clockwise, SDL_Keycode counterclockwise, double angle);
-	virtual ~RotationInputComponent();
-	virtual void handleInput(GameObject* o, Uint32 time,
-		const SDL_Event& event);
+	RotationInputComponent(double rotation, SDL_Keycode clockWise, SDL_Keycode counterClockWise);
+	~RotationInputComponent();
+	virtual void handleInput(GameObject* o, Uint32 time, const SDL_Event& event);
 private:
-	SDL_Keycode clockwise_;
-	SDL_Keycode counterclockwise_;
-	double angle_;
+	double rotation_;
+	SDL_Keycode clockWise_;
+	SDL_Keycode counterClockWise_;
 };
-
-#endif /* ROTATIONINPUTCOMPONENT_H_ */
 

@@ -1,17 +1,11 @@
-#ifndef CIRCULARMOTIONPHYSICS_H_
-#define CIRCULARMOTIONPHYSICS_H_
-
-#include "PhysicsComponent.h"
-
-/*
-*
-*/
-class CircularMotionPhysics : public PhysicsComponent {
+#pragma once
+#include "BasicMotionPhysics.h"
+class CircularMotionPhysics :
+	public BasicMotionPhysics
+{
 public:
 	CircularMotionPhysics();
 	virtual ~CircularMotionPhysics();
 	virtual void update(GameObject* o, Uint32 time);
-private:
 };
 
-#endif /* CIRCULARMOTIONPHYSICS_H_ */
