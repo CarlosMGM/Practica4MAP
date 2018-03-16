@@ -59,3 +59,33 @@ void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D ve
 	bullet->setPosition(position);
 	bullet->setVelocity(velocity);
 }
+
+void StarTrekBulletManager::receive(Message* msg) {
+	switch (msg->id_) {
+	case ROUND_START:
+		for each (Bullet* var in bullets_)
+		{
+			var->setActive(false);
+		}
+			break;
+	case ROUND_OVER:
+		for each (Bullet* var in bullets_)
+		{
+			var->setActive(false);
+		}
+			break;
+	case BULLET_ASTROID_COLLISION:
+		BulletAstroidCollision* m = static_cast<BulletAstroidCollision*>(msg);
+		m->bullet_->setActive(false);
+			break;
+	case BULLET_FIGHTER_COLLISION:
+		BulletFighterCollision* m = static_cast<BulletFighterCollision*>(msg);
+		m->bullet_->setActive(false);
+			break;
+	case FIGHTER_SHOOT:
+		FighterIsShooting* m = static_cast<FighterIsShooting*>(msg);
+		//shoot(m->fighter_, m->bulletPosition_, m->bulletVelocity_);
+			break;
+		
+	}
+}
