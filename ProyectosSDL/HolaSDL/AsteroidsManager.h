@@ -5,7 +5,9 @@
 #include "Observable.h"
 #include "ImageRenderer.h"
 #include "CircularMotionPhysics.h"
-//#include "RotationPhysics.h"
+#include "RotationPhysics.h"
+
+#define MAX_VEL 20
 
 class AsteroidsManager : public GameObject, public Observer, public Observable {
 public:
@@ -23,6 +25,6 @@ private:
 	vector<Asteroid*> asteroids_;
 	ImageRenderer asteroidImage_ ;
 	CircularMotionPhysics circularPhysics_;
-	//RotationPhysics rotationPhysics_;
+	RotationPhysics rotationPhysics_;
 	int numOfAsteroids_;
 };
