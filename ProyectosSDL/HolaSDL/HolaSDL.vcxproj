@@ -84,10 +84,12 @@
     <ClCompile Include="DemoActor.cpp" />
     <ClCompile Include="ExampleGame.cpp" />
     <ClCompile Include="Fighter.cpp" />
+    <ClCompile Include="FightersManager.cpp" />
     <ClCompile Include="FillRectRenderer.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GunInputComponent.cpp" />
     <ClCompile Include="ImageRenderer.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="main.cpp" />
@@ -127,10 +129,12 @@
     <ClInclude Include="DemoActor.h" />
     <ClInclude Include="ExampleGame.h" />
     <ClInclude Include="Fighter.h" />
+    <ClInclude Include="FightersManager.h" />
     <ClInclude Include="FillRectRenderer.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GunInputComponent.h" />
     <ClInclude Include="ImageRenderer.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Messages.h" />
