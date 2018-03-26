@@ -16,19 +16,22 @@ StarTrekBulletManager::~StarTrekBulletManager()
 void StarTrekBulletManager::update(Uint32 time){
 	for each (Bullet* var in bullets_)
 	{
-		var->update(time);
-		Vector2D pos = var->getPosition();
+		if (var->isActive()) {
+			var->update(time);
+			Vector2D pos = var->getPosition();
 
-		if (pos.getX > game_->getWindowWidth() || pos.getX < 0
-			|| pos.getY > game_->getWindowHeight() || pos.getY < 0)
-			var->setActive(false);
+			if (pos.getX() > game_->getWindowWidth() || pos.getX() < 0
+				|| pos.getY() > game_->getWindowHeight() || pos.getY() < 0)
+				var->setActive(false);
+		}
 	}
 }
 
 void StarTrekBulletManager::render(Uint32 time) {
 	for each (Bullet* var in bullets_)
 	{
-		var->render(time);
+		if(var->isActive())
+			var->render(time);
 	}
 }
 
@@ -62,29 +65,34 @@ void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D ve
 
 void StarTrekBulletManager::receive(Message* msg) {
 	switch (msg->id_) {
-	case ROUND_START:
+	case ROUND_START: {
+		for each (Bullet* var in bullets_)
+			{
+				var->setActive(false);
+			}
+		}
+		break;
+	case ROUND_OVER: {
 		for each (Bullet* var in bullets_)
 		{
 			var->setActive(false);
 		}
-			break;
-	case ROUND_OVER:
-		for each (Bullet* var in bullets_)
-		{
-			var->setActive(false);
-		}
-			break;
-	case BULLET_ASTROID_COLLISION:
+}
+		break;
+	case BULLET_ASTROID_COLLISION: {
 		BulletAstroidCollision* m = static_cast<BulletAstroidCollision*>(msg);
-		m->bullet_->setActive(false);
-			break;
-	case BULLET_FIGHTER_COLLISION:
+		m->bullet_->setActive(false); 
+	}
+								   break;
+	case BULLET_FIGHTER_COLLISION: {
 		BulletFighterCollision* n = static_cast<BulletFighterCollision*>(msg);
 		n->bullet_->setActive(false);
+	}
 			break;
-	case FIGHTER_SHOOT:
+	case FIGHTER_SHOOT: {
 		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
-		shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_);
+		shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_); 
+	}
 			break;
 		
 	}
