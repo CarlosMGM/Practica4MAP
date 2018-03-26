@@ -13,9 +13,10 @@ public:
 	ImageRenderer(Texture * image, SDL_Rect*r);
 	virtual ~ImageRenderer();
 	virtual void render(GameObject* o, Uint32 time);
-private:
-	Texture* image_;
+
+protected:
 	SDL_Rect * clip_ = nullptr;
+	Texture* image_;
 };
 
 #endif /* IMAGERENDERER_H_ */
