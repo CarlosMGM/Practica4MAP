@@ -38,10 +38,11 @@ vector<Asteroid*>& AsteroidsManager::getAstroids()
 
 void AsteroidsManager::receive(Message * msg)
 {
+	Asteroid * ast;
 	switch (msg->id_)
 	{
 	case BULLET_ASTROID_COLLISION:
-		Asteroid * ast = static_cast<BulletAstroidCollision*>(msg)->astroid_;
+		ast = static_cast<BulletAstroidCollision*>(msg)->astroid_;
 		ast->setActive(false);
 		numOfAsteroids_--;
 		if (ast->getGenerations() > 0) {
@@ -111,8 +112,8 @@ void AsteroidsManager::initAsteroids()
 		else
 			x = rand()%game_->getWindowWidth();
 		asteroids_.back()->setPosition(Vector2D(x, y));
-		double x = rand() % MAX_VEL;
-		double y = rand() % MAX_VEL;
-		asteroids_.back()->setVelocity(Vector2D(x, y));
+		double vx = rand() % MAX_VEL;
+		double vy = rand() % MAX_VEL;
+		asteroids_.back()->setVelocity(Vector2D(vx, vy));
 	}
 }
