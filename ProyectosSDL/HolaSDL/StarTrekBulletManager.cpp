@@ -79,12 +79,12 @@ void StarTrekBulletManager::receive(Message* msg) {
 		m->bullet_->setActive(false);
 			break;
 	case BULLET_FIGHTER_COLLISION:
-		BulletFighterCollision* m = static_cast<BulletFighterCollision*>(msg);
-		m->bullet_->setActive(false);
+		BulletFighterCollision* n = static_cast<BulletFighterCollision*>(msg);
+		n->bullet_->setActive(false);
 			break;
 	case FIGHTER_SHOOT:
-		FighterIsShooting* m = static_cast<FighterIsShooting*>(msg);
-		//shoot(m->fighter_, m->bulletPosition_, m->bulletVelocity_);
+		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
+		shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_);
 			break;
 		
 	}
