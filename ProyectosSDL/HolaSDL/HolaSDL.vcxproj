@@ -14,7 +14,7 @@
     <ProjectGuid>{28A4C5CD-307A-4FE6-81E4-4CE1F1E49AB4}</ProjectGuid>
     <RootNamespace>HolaSDL</RootNamespace>
     <ProjectName>HolaSDL</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,6 +74,7 @@
     <ClCompile Include="Asteroid.cpp" />
     <ClCompile Include="AsteroidsManager.cpp" />
     <ClCompile Include="BadgeRenderer.cpp" />
+    <ClCompile Include="BadgeTimer.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BasicKBCtrlComponent.cpp" />
     <ClCompile Include="BasicMotionPhysics.cpp" />
@@ -90,6 +91,7 @@
     <ClCompile Include="FillRectRenderer.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameComponent.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GunInputComponent.cpp" />
     <ClCompile Include="ImageRenderer.cpp" />
@@ -123,6 +125,7 @@
     <ClInclude Include="Asteroid.h" />
     <ClInclude Include="AsteroidsManager.h" />
     <ClInclude Include="BadgeRenderer.h" />
+    <ClInclude Include="BadgeTimer.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BasicKBCtrlComponent.h" />
     <ClInclude Include="BasicMotionPhysics.h" />
@@ -139,6 +142,7 @@
     <ClInclude Include="FillRectRenderer.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GameComponent.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GunInputComponent.h" />
     <ClInclude Include="ImageRenderer.h" />
