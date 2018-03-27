@@ -16,7 +16,7 @@ public:
 	virtual void handleInput(Uint32 time, const SDL_Event& event);
 	virtual void update(Uint32 time);
 	virtual void render(Uint32 time);
-	virtual vector<Asteroid*>& getAstroids();
+	virtual vector<Asteroid*>& getAsteroids();
 	virtual void receive(Message* msg);
 private:
 	Asteroid* getAsteroid();

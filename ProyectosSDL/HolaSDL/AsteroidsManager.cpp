@@ -31,7 +31,7 @@ void AsteroidsManager::render(Uint32 time)
 			asteroids_[i]->render(time);
 }
 
-vector<Asteroid*>& AsteroidsManager::getAstroids()
+vector<Asteroid*>& AsteroidsManager::getAsteroids()
 {
 	return asteroids_;
 }

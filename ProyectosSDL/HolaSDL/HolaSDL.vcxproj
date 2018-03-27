@@ -80,6 +80,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletsManager.cpp" />
     <ClCompile Include="CircularMotionPhysics.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Collisions.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="DemoActor.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletsManager.h" />
     <ClInclude Include="CircularMotionPhysics.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Collisions.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="DemoActor.h" />
