@@ -2,8 +2,9 @@
 #include "DemoActor.h"
 
 
-ExampleGame::ExampleGame() :
-		SDLGame("Example Game", _WINDOW_WIDTH_, _WINDOW_HEIGHT_) {
+ExampleGame::ExampleGame() : SDLGame("Example Game", _WINDOW_WIDTH_, _WINDOW_HEIGHT_), bulletsManager_(this), fightersManager_(this, &bulletsManager_),
+	astroidsManager_(this), collisionManager_(this, &bulletsManager_, &astroidsManager_, &fightersManager_), gameManager_(this), soundManager_(this)
+{
 	initGame();
 	exit_ = false;
 
@@ -14,36 +15,20 @@ ExampleGame::~ExampleGame() {
 }
 
 void ExampleGame::initGame() {
-
 	// hide cursor
 	SDL_ShowCursor(0);
+	collisionManager_.registerObserver(&gameManager_);
+	astroidsManager_.registerObserver(&gameManager_);
+	gameManager_.registerObserver(&bulletsManager_);
+	gameManager_.registerObserver(&astroidsManager_);
+	gameManager_.registerObserver(&fightersManager_);
+	gameManager_.registerObserver(&soundManager_);
 
-	/*ball_ = new Ball(this);
-	ball_->setWidth(11);
-	ball_->setHeight(11);
-	ball_->setPosition(
-			Vector2D(getWindowWidth() / 2 - 6, getWindowHeight() / 2 - 6));
-*/
-	// leftPaddle_ = new Paddle(this, SDLK_UP, SDLK_DOWN, SDLK_SPACE);
-	// leftPaddle_ = new PaddleWithMouse(this);
-	// leftPaddle_ = new PaddleWithAI(this,ball_);
-	// leftPaddle_ = new PaddleWithTransRect(this, SDLK_UP, SDLK_DOWN, SDLK_SPACE);
-	/*leftPaddle_ = new PaddleWithAIWithTransRect(this,ball_);
-	leftPaddle_->setWidth(10);
-	leftPaddle_->setHeight(50);
-	leftPaddle_->setPosition(Vector2D(5, getWindowHeight() / 2 - 25));*/
-
-	//rightPaddle_ = new Paddle(this, SDLK_a, SDLK_z, SDLK_s);
-	// rightPaddle_ = new PaddleWithMouse(this);
-	/*rightPaddle_ = new PaddleWithMouseWithTransRect(this);
-	rightPaddle_->setWidth(10);
-	rightPaddle_->setHeight(50);
-	rightPaddle_->setPosition(
-			Vector2D(getWindowWidth() - 15, getWindowHeight() / 2 - 25));
-
-	actors_.push_back(leftPaddle_);
-	actors_.push_back(rightPaddle_);
-	actors_.push_back(ball_);*/
+	actors_.push_back(&bulletsManager_);
+	actors_.push_back(&fightersManager_);
+	actors_.push_back(&astroidsManager_);
+	actors_.push_back(&collisionManager_);
+	actors_.push_back(&gameManager_);
 }
 
 void ExampleGame::closeGame() {
@@ -131,9 +116,9 @@ void ExampleGame::handleInput(Uint32 time) {
 	//			break;
 	//		}
 	//	}
-	//	for (GameObject* o : actors_) {
-	//		o->handleInput(time, event);
-	//	}
+		for (GameObject* o : actors_) {
+			o->handleInput(time, event);
+		}
 	//}
 }
 

@@ -63,7 +63,7 @@ void AsteroidsManager::receive(Message * msg)
 			numOfAsteroids_ += n;
 		}
 		if (numOfAsteroids_ == 0)
-			send(Message(ROUND_OVER));
+			send(Message(NO_MORE_ATROIDS));
 		break;
 	case ROUND_START:
 		initAsteroids();
