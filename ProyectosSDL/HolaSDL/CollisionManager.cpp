@@ -10,7 +10,7 @@ CollisionManager::~CollisionManager()
 {
 }
 
-void CollisionManager::handleImput(Uint32 time, const SDL_Event & event)
+void CollisionManager::handleInput(Uint32 time, const SDL_Event & event)
 {
 }
 

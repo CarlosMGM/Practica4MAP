@@ -11,7 +11,7 @@ class CollisionManager :
 public:
 	CollisionManager(SDLGame* game,	BulletsManager* bulletsManager,	AsteroidsManager* asteroidManager, FightersManager* fightersManager);
 	virtual ~CollisionManager();
-	virtual void handleImput(Uint32 time, const SDL_Event & event);
+	virtual void handleInput(Uint32 time, const SDL_Event & event);
 	virtual void update(Uint32 time);
 	virtual void render(Uint32 time);
 private:
