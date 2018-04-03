@@ -54,11 +54,13 @@ Bullet* StarTrekBulletManager::getBullet() {
 	Bullet* bullet = new Bullet(game_);
 	bullet->addPhysicsComponent(& bulletPhysics_);
 	bullet->addRenderComponent(& bulletRenderer_);
+	bullets_.push_back(bullet);
 	return bullet;
 }
 
 void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D velocity){
 	Bullet* bullet = getBullet();
+	bullet->setActive(true);
 	bullet->setPosition(position);
 	bullet->setVelocity(velocity);
 }
