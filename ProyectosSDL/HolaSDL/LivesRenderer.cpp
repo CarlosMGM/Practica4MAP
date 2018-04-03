@@ -14,8 +14,11 @@ LivesRenderer::~LivesRenderer()
 
 void LivesRenderer::render(GameObject * o, Uint32 time)
 {
-	SDL_Rect rect
-		RECT(0, 0, clip_->w, clip_->h);
-	for (int i = 0; i < static_cast<GameManager*>(o)->getLives(); i++, rect.x += clip_->w)
+
+	SDL_Rect rect;
+	rect.h = SIZE;
+	rect.w = SIZE;
+	rect.x = rect.y = 0;
+	for (int i = 0; i < static_cast<GameManager*>(o)->getLives(); i++, rect.x += SIZE)
 		image_->render(o->getGame()->getRenderer(), rect, clip_);
 }

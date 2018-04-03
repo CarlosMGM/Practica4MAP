@@ -13,8 +13,11 @@ BadgeRenderer::~BadgeRenderer()
 
 void BadgeRenderer::render(GameObject * o, Uint32 time)
 {
-	SDL_Rect rect
-		RECT(o->getGame()->getWindowWidth() - clip_->w*2, 0,
-			clip_->w*2, clip_->h*2);
+	SDL_Rect rect;
+	rect.h = SIZE;
+	rect.w = SIZE;
+	rect.x = o->getGame()->getWindowWidth() - SIZE;
+	rect.y = 0;
+
 	image_->render(o->getGame()->getRenderer(), rect, clip_);
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "ImageRenderer.h"
+#define SIZE 80;
+
 class BadgeRenderer :
 	public ImageRenderer
 {

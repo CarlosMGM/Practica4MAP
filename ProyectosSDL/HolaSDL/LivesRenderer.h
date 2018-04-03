@@ -1,6 +1,6 @@
 #pragma once
 #include "ImageRenderer.h"
-
+#define SIZE 40
 class LivesRenderer :
 	public ImageRenderer
 {
