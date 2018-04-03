@@ -2,8 +2,12 @@
 
 
 
-GameManager::GameManager(SDLGame* game): Container(game), Observer(), Observable()
+GameManager::GameManager(SDLGame* game): Container(game), Observer(), Observable(), livesRenderer_(LivesRenderer(game)), gameCtrl_(GameCtrlInputComponent(SDLK_RETURN))
 {
+	this->addRenderComponent(&scoreRenderer_);
+	this->addRenderComponent(&livesRenderer_);
+	this->addInputComponent(&gameCtrl_);
+	this->addRenderComponent(&gameMsg_);
 }
 
 
@@ -19,42 +23,47 @@ void GameManager::setBadge(bool b) {
 }
 
 bool GameManager::isGameOver() const {
-
+	return lives_ == 0;
 }
 
 int GameManager::getLives() const {
-
+	return lives_;
 }
 
 bool GameManager::isRunning() const {
-
+	return running_;
 }
 
 void GameManager::setRunning(bool running) {
-
+	running_ = running;
+	if (running)
+		this->addRenderComponent(&gameMsg_);
+	else
+		this->delRenderComponent(&gameMsg_);
 }
 
 int GameManager::getScore() const {
-
+	return score_;
 }
 
 void GameManager::receive(Message* msg) {
 	
 	switch (msg->id_) {
 	case ASTROID_FIGHTER_COLLISION: {
-		badgeCounter = 0;
-		lives--;
+		badgeCounter_ = 0;
+		lives_--;
 		setBadge(false);
 		send(Message(ROUND_OVER));
-		if (lives == 0) {
+		if (lives_ == 0) {
 			send(Message(GAME_OVER));
+			setRunning(false);
 			}
 		}
 				break;
 		case BULLET_ASTROID_COLLISION: {
-			score++;
-			badgeCounter++;
-			if (badgeCounter == 9) {
+			score_++;
+			badgeCounter_++;
+			if (badgeCounter_ == 9) {
 				setBadge(true);
 				badgeTimer_.start(10000);
 			}

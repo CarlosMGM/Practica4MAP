@@ -162,6 +162,18 @@
     <ClCompile Include="BadgeTimer.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreRenderer.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="LivesRenderer.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCtrlInputComponent.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMsgRenderer.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
@@ -312,6 +324,18 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="BadgeTimer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreRenderer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="LivesRenderer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCtrlInputComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMsgRenderer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

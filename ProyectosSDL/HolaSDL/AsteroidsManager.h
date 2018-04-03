@@ -1,5 +1,5 @@
+#pragma once
 #include "Asteroid.h"
-
 #include "GameObject.h"
 #include "Observer.h"
 #include "Observable.h"

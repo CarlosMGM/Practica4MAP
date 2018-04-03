@@ -1,6 +1,5 @@
 #pragma once
 #include "PhysicsComponent.h"
-#include "GameManager.h"
 
 class BadgeTimer : public PhysicsComponent {
 

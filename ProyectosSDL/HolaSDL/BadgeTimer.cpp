@@ -1,6 +1,5 @@
 #include "BadgeTimer.h"
-
-
+#include "GameManager.h"
 
 BadgeTimer::BadgeTimer()
 {
