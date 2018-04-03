@@ -36,8 +36,10 @@ bool GameManager::isRunning() const {
 
 void GameManager::setRunning(bool running) {
 	running_ = running;
-	if (running)
+	if (running) {
 		this->addRenderComponent(&gameMsg_);
+		lives_ = 3;
+	}
 	else
 		this->delRenderComponent(&gameMsg_);
 }

@@ -4,6 +4,8 @@
 
 Asteroid::Asteroid(SDLGame* game) : Container(game)
 {
+	width_ = SIZE;
+	height_ = SIZE;
 }
 
 

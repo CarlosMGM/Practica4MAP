@@ -3,7 +3,7 @@
 
 
 FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameObject(game), fighter_(game, 1), accelerationComp_(5, 5, 5, 5, SDLK_q, SDLK_w),
-	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::SpaceShips)), rotationComp_ (5, SDLK_o, SDLK_p), gunComp1_(5, SDLK_SPACE), gunComp2_(10000, SDLK_SPACE), badgeRenderer_(game_,1,1)
+	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::Airplanes)), rotationComp_ (5, SDLK_o, SDLK_p), gunComp1_(5, SDLK_SPACE), gunComp2_(10000, SDLK_SPACE), badgeRenderer_(game_,1,1)
 {
 	gunComp1_.registerObserver(bulletsManager);
 	gunComp2_.registerObserver(bulletsManager);
@@ -12,6 +12,7 @@ FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameO
 	fighter_.addInputComponent(& rotationComp_);
 	fighter_.addInputComponent(& gunComp1_);
 	fighter_.addRenderComponent(& renderComp_);
+	fighter_.addPhysicsComponent(& circulrMotoionComp_);
 }
 
 

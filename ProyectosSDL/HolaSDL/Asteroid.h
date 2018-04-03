@@ -1,5 +1,7 @@
 #pragma once
 #include "Container.h"
+#define SIZE 20
+
 class Asteroid : public Container {
 public:
 	Asteroid(SDLGame* game);
