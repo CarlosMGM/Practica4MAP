@@ -56,7 +56,7 @@ void GameManager::receive(Message* msg) {
 		lives_--;
 		setBadge(false);
 		send(Message(ROUND_OVER));
-		if (lives_ == 0) {
+		if (isGameOver()) {
 			send(Message(GAME_OVER));
 			setRunning(false);
 			}

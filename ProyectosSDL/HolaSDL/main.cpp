@@ -4,7 +4,8 @@
 using namespace std;
 
 int main(int ac, char** av) {
-	ExampleGame g;
-	g.start();
+	ExampleGame* g = new ExampleGame();
+	g->start();
+	delete g;
 	return 0;
 }

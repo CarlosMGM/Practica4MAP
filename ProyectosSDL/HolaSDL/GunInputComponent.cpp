@@ -4,6 +4,7 @@
 
 GunInputComponent::GunInputComponent(int MaxShots, SDL_Keycode shoot): MaxShots_(MaxShots), shoot_(shoot)
 {
+	running = false;
 }
 
 
@@ -24,7 +25,7 @@ void GunInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event
 			currentShots = 0;
 		}
 		if (currentShots < MaxShots_) {
-			send(FighterIsShooting(f, o->getPosition(), o->getDirection() * 4));
+			send(FighterIsShooting(f, o->getPosition(), o->getVelocity()));
 			currentShots++;
 		}
 	}

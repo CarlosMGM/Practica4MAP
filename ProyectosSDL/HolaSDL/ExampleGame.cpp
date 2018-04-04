@@ -48,6 +48,7 @@ void ExampleGame::start() {
 		handleInput(startTime);
 		update(startTime);
 		render(startTime);
+		exit_ = gameManager_.isGameOver();
 		Uint32 frameTime = SDL_GetTicks() - startTime;
 		if (frameTime < 10)
 			SDL_Delay(10 - frameTime);

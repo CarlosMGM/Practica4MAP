@@ -4,7 +4,7 @@
 
 StarTrekBulletManager::StarTrekBulletManager(SDLGame* game) : GameObject(game)
 {
-	bulletRenderer_ = FillRectRenderer();
+	bulletRenderer_ = FillRectRenderer({ COLOR(0x00EEEEEE) });
 	bulletPhysics_ = BasicMotionPhysics();
 }
 
