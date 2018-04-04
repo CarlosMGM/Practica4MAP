@@ -49,6 +49,7 @@ Bullet* StarTrekBulletManager::getBullet() {
 	{
 		if (!bullets_[i]->isActive())
 			return bullets_[i];
+		i++;
 	}
 
 	Bullet* bullet = new Bullet(game_);
@@ -92,7 +93,7 @@ void StarTrekBulletManager::receive(Message* msg) {
 	}
 			break;
 	case FIGHTER_SHOOT: {
-		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
+ 		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
 		shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_); 
 		send(Message(FIGHTER_SHOOT));
 	}

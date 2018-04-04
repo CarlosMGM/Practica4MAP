@@ -1,20 +1,23 @@
-#pragma once
-#include "InputComponent.h"
-class AccelerationInputComponent :
-	public InputComponent
-{
-public:
-	AccelerationInputComponent(double thrust, double factor, double limit, double epsilon,
-		SDL_Keycode accelerate, SDL_Keycode decelerate);
-	~AccelerationInputComponent();
-	void handleInput(GameObject * o, Uint32 time, const SDL_Event & event);
+#ifndef ACCELERATIONINPUTCOMPONENT_H_
+#define ACCELERATIONINPUTCOMPONENT_H_
 
+#include "InputComponent.h"
+
+/*
+*
+*/
+class AccelerationInputComponent : public InputComponent {
+public:
+	AccelerationInputComponent(SDL_Keycode up, SDL_Keycode down, double thrust, double maxVelocity, double reduction);
+	virtual ~AccelerationInputComponent();
+	virtual void handleInput(GameObject* o, Uint32 time,
+		const SDL_Event& event);
 private:
+	SDL_Keycode up_;
+	SDL_Keycode down_;
 	double thrust_;
-	double limit_;
-	double factor_;
-	double epsilon_;
-	SDL_Keycode accelerate_;
-	SDL_Keycode decelerate_;
+	double maxVelocity_;
+	double reduction_;
 };
 
+#endif /* ACCELERATIONINPUTCOMPONENT_H_ */

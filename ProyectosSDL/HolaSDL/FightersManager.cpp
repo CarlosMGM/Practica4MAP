@@ -2,7 +2,7 @@
 
 
 
-FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameObject(game), fighter_(game, 1), accelerationComp_(1, 2, 2, 1.5, SDLK_q, SDLK_w),
+FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameObject(game), fighter_(game, 1), accelerationComp_(SDLK_q, SDLK_w, 0.5, 5, 0.8),
 	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::Airplanes)), rotationComp_ (5, SDLK_o, SDLK_p), gunComp1_(5, SDLK_SPACE), gunComp2_(10000, SDLK_SPACE), badgeRenderer_(game_,1,1)
 {
 	gunComp1_.registerObserver(bulletsManager);
@@ -44,6 +44,7 @@ void FightersManager::receive(Message* msg) {
 	switch (msg->id_) {
 	case ROUND_START:
 		fighter_.setActive(true);
+		fighter_.setVelocity({0.0, 0.0});
 		fighter_.setPosition( Vector2D( game_->getWindowWidth() / 2, game_->getWindowHeight() / 2));
 			break;
 	case ROUND_OVER:

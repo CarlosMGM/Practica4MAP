@@ -25,7 +25,10 @@ void GunInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event
 			currentShots = 0;
 		}
 		if (currentShots < MaxShots_) {
-			send(FighterIsShooting(f, o->getPosition(), o->getVelocity()));
+			Vector2D v = f->getDirection();
+			Vector2D p = f->getPosition();
+			v.normalize();
+			send(FighterIsShooting(f, p, v * 3));
 			currentShots++;
 		}
 	}

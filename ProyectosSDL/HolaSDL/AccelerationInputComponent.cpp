@@ -1,33 +1,30 @@
 #include "AccelerationInputComponent.h"
 
-
-AccelerationInputComponent::AccelerationInputComponent(double thrust, double factor, double limit, 
-	double epsilon,	SDL_Keycode accelerate, SDL_Keycode decelerate) : thrust_(thrust), factor_(factor), 
-	limit_(limit), epsilon_(epsilon), accelerate_(accelerate), decelerate_(decelerate)
-{
+AccelerationInputComponent::AccelerationInputComponent(SDL_Keycode up, SDL_Keycode down, double thrust, double maxVelocity, double reduction) :
+	up_(up), down_(down), thrust_(thrust), maxVelocity_(maxVelocity), reduction_(reduction){
 }
 
-AccelerationInputComponent::~AccelerationInputComponent()
-{
+AccelerationInputComponent::~AccelerationInputComponent() {
 }
 
-void AccelerationInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event & event)
-{
-	Vector2D vel = o->getVelocity();
+void AccelerationInputComponent::handleInput(GameObject* o, Uint32 time,
+	const SDL_Event& event) {
+
+	Vector2D velocity = o->getVelocity();
+
 	if (event.type == SDL_KEYDOWN) {
-		if (event.key.keysym.sym == accelerate_) {
-			vel = vel + o->getDirection() * thrust_;;
-			if (vel.magnitude() > limit_) {
-				vel.normalize();
-				vel = vel * limit_;
+		if (event.key.keysym.sym == up_) {
+			velocity.set(o->getVelocity() + o->getDirection()*thrust_);
+			if (o->getVelocity().magnitude() > maxVelocity_) {
+				velocity.set(o->getVelocity());
+				velocity.normalize();
+				velocity = velocity * maxVelocity_;
 			}
 		}
-		else if (event.key.keysym.sym == decelerate_) {
-			vel = vel - vel * factor_;
-			if (vel.magnitude() <= epsilon_)
-				vel.set(Vector2D(0, 0));
+		else if (event.key.keysym.sym == down_) {
+			velocity = velocity*reduction_;
 		}
 
-		o->setVelocity(vel);
+		o->setVelocity(velocity);
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "BulletsManager.h"
+#include "Fighter.h"
 #include "FillRectRenderer.h"
 #include "BasicMotionPhysics.h"
 

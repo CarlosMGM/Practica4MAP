@@ -22,7 +22,7 @@ void CollisionManager::update(Uint32 time)
 
 	// fighter with asteroids
 	for (int i = 0; i < asteroids.size(); i++)
-		if (asteroids[i]->isActive() && Collisions::collidesWithRotation(fighter, asteroids[i]))
+		if (asteroids[i]->isActive() && fighter->isActive() && Collisions::collidesWithRotation(fighter, asteroids[i]))
 			send(AstroidFighterCollision(asteroids[i], fighter));
 
 	// bullets with asteroids

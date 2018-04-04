@@ -60,6 +60,9 @@ void GameManager::receive(Message* msg) {
 			send(Message(GAME_OVER));
 			setRunning(false);
 			}
+		else {
+			send(Message(ROUND_START));
+		}
 		}
 				break;
 		case BULLET_ASTROID_COLLISION: {
