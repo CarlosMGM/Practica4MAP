@@ -13,7 +13,7 @@ void GameCtrlInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_
 {
 	if (event.type == SDL_KEYDOWN) {
 		if (event.key.keysym.sym == start_) {
-			static_cast<GameManager*>(o)->send(Message(ROUND_START));
+			static_cast<GameManager*>(o)->send(&Message(ROUND_START));
 			static_cast<GameManager*>(o)->setRunning(true);
 		}
 	}

@@ -17,9 +17,9 @@ GameManager::~GameManager()
 
 void GameManager::setBadge(bool b) {
 	if (b)
-		send(Message(BADGE_ON));
+		send(&Message(BADGE_ON));
 	else
-		send(Message(BADGE_OFF));
+		send(&Message(BADGE_OFF));
 }
 
 bool GameManager::isGameOver() const {
@@ -55,13 +55,13 @@ void GameManager::receive(Message* msg) {
 		badgeCounter_ = 0;
 		lives_--;
 		setBadge(false);
-		send(Message(ROUND_OVER));
+		send(&Message(ROUND_OVER));
 		if (isGameOver()) {
-			send(Message(GAME_OVER));
+			send(&Message(GAME_OVER));
 			setRunning(false);
 			}
 		else {
-			send(Message(ROUND_START));
+			send(&Message(ROUND_START));
 		}
 		}
 				break;
@@ -76,8 +76,8 @@ void GameManager::receive(Message* msg) {
 				break;
 		case NO_MORE_ATROIDS: {
 			setBadge(false);
-			send(Message(ROUND_OVER));
-			send(Message(GAME_OVER));
+			send(&Message(ROUND_OVER));
+			send(&Message(GAME_OVER));
 		}
 				break;
 			

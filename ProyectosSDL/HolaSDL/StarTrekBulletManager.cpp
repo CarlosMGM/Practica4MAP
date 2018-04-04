@@ -95,7 +95,7 @@ void StarTrekBulletManager::receive(Message* msg) {
 	case FIGHTER_SHOOT: {
  		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
 		shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_); 
-		send(Message(FIGHTER_SHOOT));
+		send(&Message(FIGHTER_SHOOT));
 	}
 			break;
 		

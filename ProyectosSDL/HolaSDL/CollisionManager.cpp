@@ -23,13 +23,13 @@ void CollisionManager::update(Uint32 time)
 	// fighter with asteroids
 	for (int i = 0; i < asteroids.size(); i++)
 		if (asteroids[i]->isActive() && fighter->isActive() && Collisions::collidesWithRotation(fighter, asteroids[i]))
-			send(AstroidFighterCollision(asteroids[i], fighter));
+			send(&AstroidFighterCollision(asteroids[i], fighter));
 
 	// bullets with asteroids
 	for (int i = 0; i < bullets.size(); i++)
 		for (int j = 0; j < asteroids.size(); j++)
 			if (bullets[i]->isActive() && asteroids[j]->isActive() && Collisions::collidesWithRotation(bullets[i], asteroids[j]))
-				send(BulletAstroidCollision(bullets[i], asteroids[j]));
+				send(&BulletAstroidCollision(bullets[i], asteroids[j]));
 }
 
 void CollisionManager::render(Uint32 time)
