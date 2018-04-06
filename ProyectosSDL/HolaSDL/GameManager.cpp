@@ -23,7 +23,7 @@ void GameManager::setBadge(bool b) {
 }
 
 bool GameManager::isGameOver() const {
-	return lives_ == 0;
+	return lives_ < 0;
 }
 
 int GameManager::getLives() const {

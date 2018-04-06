@@ -3,7 +3,7 @@
 
 
 Bullet::Bullet(SDLGame* game) : Container(game){
-	width_ = height_ = 10;
+	width_ = height_ = 4;
 }
 
 

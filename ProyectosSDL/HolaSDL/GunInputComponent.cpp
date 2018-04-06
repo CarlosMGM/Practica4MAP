@@ -25,16 +25,11 @@ void GunInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event
 			currentShots = 0;
 		}
 		if (currentShots < MaxShots_) {
-			Vector2D v = f->getVelocity();
+			Vector2D v = f->getDirection();
 			Vector2D p = f->getPosition();
 			p = p + Vector2D(f->getWidth() / 2, f->getHeight() / 2);
 			v.normalize();
-			if (v.magnitude() < MIN_VEL)
-				v = Vector2D(MIN_VEL / 2.0, MIN_VEL / 2.0);
-			v = f->getDirection() * v.magnitude();
-			v = v * 3;
-			v.rotate(v.angle(f->getDirection()));
-			send(&FighterIsShooting(f, p, v));
+			send(&FighterIsShooting(f, p, v * 4));
 			currentShots++;
 		}
 	}
