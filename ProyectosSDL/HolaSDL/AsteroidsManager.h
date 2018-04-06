@@ -26,5 +26,5 @@ private:
 	ImageRenderer asteroidImage_ ;
 	CircularMotionPhysics circularPhysics_;
 	RotationPhysics rotationPhysics_;
-	int numOfAsteroids_;
+	int numOfAsteroids_ = 0;
 };
