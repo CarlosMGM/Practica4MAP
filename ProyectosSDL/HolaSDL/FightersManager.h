@@ -18,6 +18,7 @@ public:
 	Fighter* getFighter();
 	virtual void receive(Message* msg);
 private:
+	bool badgeState = false;
 	Fighter fighter_;
 	CircularMotionPhysics circulrMotoionComp_;
 	AccelerationInputComponent accelerationComp_;

@@ -16,7 +16,7 @@ void GunInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event
 	
 	Fighter* f = static_cast<Fighter*>(o);
 	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == shoot_) {
-		if (!running) {
+ 		if (!running) {
 			timer = time + 3000;
 			running = true;
 		}
@@ -25,7 +25,7 @@ void GunInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event
 			currentShots = 0;
 		}
 		if (currentShots < MaxShots_) {
-			Vector2D v = f->getDirection();
+ 			Vector2D v = f->getDirection();
 			Vector2D p = f->getPosition();
 			p = p + Vector2D(f->getWidth() / 2, f->getHeight() / 2);
 			v.normalize();

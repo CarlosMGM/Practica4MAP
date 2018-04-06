@@ -51,14 +51,20 @@ void FightersManager::receive(Message* msg) {
 		fighter_.setActive(false);
 			break;
 	case BADGE_ON:
-		fighter_.delInputComponent(&gunComp1_);
-		fighter_.addInputComponent(&gunComp2_);
-		fighter_.addRenderComponent(&badgeRenderer_);
+		if (!badgeState) {
+			fighter_.delInputComponent(&gunComp1_);
+			fighter_.addInputComponent(&gunComp2_);
+			fighter_.addRenderComponent(&badgeRenderer_);
+			badgeState = true;
+		}
 			break;
 	case BADGE_OFF:
-		fighter_.delInputComponent(&gunComp2_);
-		fighter_.addInputComponent(&gunComp1_);
-		fighter_.delRenderComponent(&badgeRenderer_);
+		if (badgeState) {
+			fighter_.delInputComponent(&gunComp2_);
+			fighter_.addInputComponent(&gunComp1_);
+			fighter_.delRenderComponent(&badgeRenderer_);
+			badgeState = false;
+		}
 			break;
 	}
 }
