@@ -93,7 +93,7 @@ void AsteroidsManager::initAsteroids()
 {
 	for (int i = 0; i < asteroids_.size(); i++)
 		asteroids_[i]->setActive(false);
-	numOfAsteroids_ = rand() % 5 + 0;
+	numOfAsteroids_ = rand() % 5 + 5;
 	for (int i = 0; i < numOfAsteroids_; i++) {
 		Uint32 x = 0, y = 0;
 		asteroids_.push_back(new Asteroid(game_));
