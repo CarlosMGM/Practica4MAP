@@ -24,6 +24,7 @@ void ExampleGame::initGame() {
 	collisionManager_.registerObserver(&soundManager_);
 	collisionManager_.registerObserver(&bulletsManager_);
 	collisionManager_.registerObserver(&astroidsManager_);
+
 	astroidsManager_.registerObserver(&gameManager_);
 	bulletsManager_.registerObserver(&soundManager_);
 

@@ -62,6 +62,7 @@ Bullet* StarTrekBulletManager::getBullet() {
 void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D velocity){
 	Bullet* bullet = getBullet();
 	bullet->setActive(true);
+	position = position - Vector2D(bullet->getWidth()/2, bullet->getHeight()/2);
 	bullet->setPosition(position);
 	bullet->setVelocity(velocity);
 }
@@ -95,7 +96,6 @@ void StarTrekBulletManager::receive(Message* msg) {
 	case FIGHTER_SHOOT: {
  		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
 		shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_); 
-		send(&Message(FIGHTER_SHOOT));
 	}
 			break;
 		
