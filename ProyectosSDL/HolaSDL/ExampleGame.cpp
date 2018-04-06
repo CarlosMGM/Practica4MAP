@@ -95,7 +95,7 @@ void ExampleGame::update(Uint32 time) {
 }
 
 void ExampleGame::render(Uint32 time) {
-	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00AAAAFF));
+	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00000011));
 	SDL_RenderClear(getRenderer());
 
 	for (GameObject* o : actors_) {
