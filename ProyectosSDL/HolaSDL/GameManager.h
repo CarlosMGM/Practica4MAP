@@ -13,6 +13,8 @@ class GameManager : public Container, public Observer, public Observable {
 public:
 	GameManager(SDLGame* game);
 	virtual ~GameManager();
+
+	void virtual update(Uint32 time);
 	bool isGameOver() const;
 	int getLives() const;
 	bool isRunning() const;

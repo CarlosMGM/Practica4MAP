@@ -4,6 +4,7 @@
 
 GameManager::GameManager(SDLGame* game): Container(game), Observer(), Observable(), livesRenderer_(LivesRenderer(game)), gameCtrl_(GameCtrlInputComponent(SDLK_RETURN))
 {
+
 	this->addRenderComponent(&scoreRenderer_);
 	this->addRenderComponent(&livesRenderer_);
 	this->addInputComponent(&gameCtrl_);
@@ -13,6 +14,10 @@ GameManager::GameManager(SDLGame* game): Container(game), Observer(), Observable
 
 GameManager::~GameManager()
 {
+}
+
+void GameManager::update(Uint32 time) {
+	badgeTimer_.update(this, time);
 }
 
 void GameManager::setBadge(bool b) {
