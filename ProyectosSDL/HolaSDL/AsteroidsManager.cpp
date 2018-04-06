@@ -1,4 +1,5 @@
 #include "AsteroidsManager.h"
+#include <algorithm>
 
 AsteroidsManager::AsteroidsManager(SDLGame* game) : GameObject(game), 
 asteroidImage_(ImageRenderer(game->getResources()->getImageTexture(Resources::ImageId::Astroid))), rotationPhysics_(2), numOfAsteroids_(0)
@@ -113,8 +114,8 @@ void AsteroidsManager::initAsteroids()
 		else
 			x = rand()%game_->getWindowWidth();
 		asteroids_.back()->setPosition(Vector2D(x, y));
-		double vx = rand() % MAX_VEL +0.1;
-		double vy = rand() % MAX_VEL +0.1;
+		double vx = max(static_cast<double>(rand() % MAX_VEL), 0.5);
+		double vy = max(static_cast<double>(rand() % MAX_VEL), 0.5);
 		asteroids_.back()->setVelocity(Vector2D(vx, vy));
 	}
 }
