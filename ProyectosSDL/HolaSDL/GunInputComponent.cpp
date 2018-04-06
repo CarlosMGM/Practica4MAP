@@ -1,5 +1,5 @@
 #include "GunInputComponent.h"
-
+#include <algorithm>
 
 
 GunInputComponent::GunInputComponent(int MaxShots, SDL_Keycode shoot): MaxShots_(MaxShots), shoot_(shoot)
@@ -29,7 +29,12 @@ void GunInputComponent::handleInput(GameObject * o, Uint32 time, const SDL_Event
 			Vector2D p = f->getPosition();
 			p = p + Vector2D(f->getWidth() / 2, f->getHeight() / 2);
 			v.normalize();
-			send(&FighterIsShooting(f, p, v * 3));
+			if (v.magnitude() < MIN_VEL)
+				v = Vector2D(MIN_VEL / 2.0, MIN_VEL / 2.0);
+			v = f->getDirection() * v.magnitude();
+			v = v * 3;
+			v.rotate(v.angle(f->getDirection()));
+			send(&FighterIsShooting(f, p, v));
 			currentShots++;
 		}
 	}

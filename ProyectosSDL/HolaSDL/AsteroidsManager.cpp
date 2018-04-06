@@ -112,8 +112,8 @@ void AsteroidsManager::initAsteroids()
 		else
 			x = rand()%game_->getWindowWidth();
 		asteroids_.back()->setPosition(Vector2D(x, y));
-		double vx = rand() % MAX_VEL;
-		double vy = rand() % MAX_VEL;
+		double vx = rand() % MAX_VEL +0.1;
+		double vy = rand() % MAX_VEL +0.1;
 		asteroids_.back()->setVelocity(Vector2D(vx, vy));
 	}
 }

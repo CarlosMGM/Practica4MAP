@@ -1,6 +1,6 @@
 #pragma once
 #include "Container.h"
-#define SIZE 20
+#define SIZE 25
 
 class Asteroid : public Container {
 public:

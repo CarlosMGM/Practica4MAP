@@ -7,7 +7,7 @@
 #include "CircularMotionPhysics.h"
 #include "RotationPhysics.h"
 
-#define MAX_VEL 3
+#define MAX_VEL 2
 
 class AsteroidsManager : public GameObject, public Observer, public Observable {
 public:

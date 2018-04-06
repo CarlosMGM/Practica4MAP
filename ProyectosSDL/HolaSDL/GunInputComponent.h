@@ -3,6 +3,8 @@
 #include "Observable.h"
 #include "Fighter.h"
 
+#define MIN_VEL 2
+
 class GunInputComponent :
 	public InputComponent, public Observable
 {
