@@ -2,7 +2,7 @@
 
 
 
-Bullet::Bullet(SDLGame* game) : Container(game){
+Bullet::Bullet(SDLGame* game, bool super = false) : Container(game), super_(super){
 	width_ = height_ = 4;
 }
 
@@ -17,4 +17,9 @@ void Bullet::setFighterId(int id) {
 
 int Bullet::getFighterId() {
 	return fighterId_;
+}
+
+bool Bullet::isSuper()
+{
+	return super_;
 }
