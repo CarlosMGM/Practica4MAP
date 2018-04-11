@@ -12,7 +12,8 @@ public:
 	GunInputComponent(int Maxshots, SDL_Keycode shoot);
 	~GunInputComponent();
 	virtual void handleInput(GameObject * o, Uint32 time, const SDL_Event & event);
-private:
+protected:
+	virtual void shoot(Fighter* fighter, Vector2D position, Vector2D velocity);
 	bool running = false;
 	int MaxShots_;
 	int currentShots = 0;
