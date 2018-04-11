@@ -17,6 +17,7 @@ private:
 	virtual void receive(Message* msg);
 	virtual void shoot(Fighter* owner, Vector2D position, Vector2D velocity);
 
+
 	std::vector<Bullet*> bullets_;
 	FillRectRenderer bulletRenderer_;
 	BasicMotionPhysics bulletPhysics_;

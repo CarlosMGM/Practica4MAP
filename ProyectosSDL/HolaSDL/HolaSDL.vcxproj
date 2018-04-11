@@ -100,6 +100,7 @@
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="LivesRenderer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MultiGunComponent.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Observable.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="LivesRenderer.h" />
     <ClInclude Include="Messages.h" />
+    <ClInclude Include="MultiGunComponent.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Observable.h" />
     <ClInclude Include="Observer.h" />

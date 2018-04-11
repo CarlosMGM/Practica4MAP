@@ -67,6 +67,7 @@ void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D ve
 	bullet->setVelocity(velocity);
 }
 
+
 void StarTrekBulletManager::receive(Message* msg) {
 	switch (msg->id_) {
 	case ROUND_START: {
