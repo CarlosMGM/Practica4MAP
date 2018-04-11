@@ -3,14 +3,21 @@
 
 
 FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameObject(game), fighter_(game, 1), accelerationComp_(SDLK_q, SDLK_w, 0.5, 5, 0.8),
-	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::Airplanes)), rotationComp_ (5, SDLK_o, SDLK_p), gunComp1_(5, SDLK_SPACE), gunComp2_(10000, SDLK_SPACE), badgeRenderer_(game_,1,1)
+	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::Airplanes)), rotationComp_ (5, SDLK_o, SDLK_p), badgeRenderer_(game_,1,1), gunComp(5, SDLK_SPACE)
 {
-	gunComp1_.registerObserver(bulletsManager);
-	gunComp2_.registerObserver(bulletsManager);
+	gunComponents.push_back(new SuperGunComponent(5, SDLK_SPACE));
+	gunComponents.push_back(new GunInputComponent(1000, SDLK_SPACE));
+	gunComponents.push_back(new MultiGunComponent(5, SDLK_SPACE));
+
+	gunComp.registerObserver(bulletsManager);
+	for ( int i = 0;  i < gunComponents.size(); i++)
+	{
+		gunComponents[i]->registerObserver(bulletsManager);
+	}
 
 	fighter_.addInputComponent(& accelerationComp_);
 	fighter_.addInputComponent(& rotationComp_);
-	fighter_.addInputComponent(& gunComp1_);
+	fighter_.addInputComponent(&gunComp);
 	fighter_.addRenderComponent(& renderComp_);
 	fighter_.addPhysicsComponent(& circulrMotoionComp_);
 }
@@ -43,6 +50,7 @@ Fighter* FightersManager::getFighter() {
 void FightersManager::receive(Message* msg) {
 	switch (msg->id_) {
 	case ROUND_START:
+		counter = 0;
 		fighter_.setActive(true);
 		fighter_.setVelocity({0.0, 0.0});
 		fighter_.setPosition( Vector2D( game_->getWindowWidth() / 2, game_->getWindowHeight() / 2));
@@ -52,17 +60,18 @@ void FightersManager::receive(Message* msg) {
 			break;
 	case BADGE_ON:
 		if (!badgeState) {
-			fighter_.delInputComponent(&gunComp1_);
-			fighter_.addInputComponent(&gunComp2_);
+ 			fighter_.delInputComponent(&gunComp);
+			fighter_.addInputComponent(gunComponents[counter]);
 			fighter_.addRenderComponent(&badgeRenderer_);
 			badgeState = true;
 		}
 			break;
 	case BADGE_OFF:
 		if (badgeState) {
-			fighter_.delInputComponent(&gunComp2_);
-			fighter_.addInputComponent(&gunComp1_);
+			fighter_.delInputComponent(gunComponents[counter]);
+			fighter_.addInputComponent(&gunComp);
 			fighter_.delRenderComponent(&badgeRenderer_);
+			counter = (counter + 1) % 3;
 			badgeState = false;
 		}
 			break;

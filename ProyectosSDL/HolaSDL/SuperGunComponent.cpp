@@ -2,7 +2,7 @@
 
 
 
-SuperGunComponent::SuperGunComponent()
+SuperGunComponent::SuperGunComponent(int Maxshots, SDL_Keycode shoot): GunInputComponent(Maxshots, shoot)
 {
 }
 

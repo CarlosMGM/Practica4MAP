@@ -73,9 +73,10 @@ void GameManager::receive(Message* msg) {
 		case BULLET_ASTROID_COLLISION: {
 			score_++;
 			badgeCounter_++;
-			if (badgeCounter_ == 9) {
+			if (badgeCounter_ == 4) {
 				setBadge(true);
-				badgeTimer_.start(10000);
+				badgeCounter_ = 0;
+				badgeTimer_.start(5000);
 			}
 		}	
 				break;

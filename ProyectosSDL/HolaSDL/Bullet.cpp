@@ -2,7 +2,7 @@
 
 
 
-Bullet::Bullet(SDLGame* game, bool super = false) : Container(game), super_(super){
+Bullet::Bullet(SDLGame* game, bool super) : Container(game), super_(super){
 	width_ = height_ = 4;
 }
 

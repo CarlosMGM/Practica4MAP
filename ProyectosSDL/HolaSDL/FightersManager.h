@@ -6,6 +6,8 @@
 #include "ImageRenderer.h"
 #include "RotationInputComponent.h"
 #include "GunInputComponent.h"
+#include "MultiGunComponent.h"
+#include "SuperGunComponent.h"
 #include "BadgeRenderer.h"
 
 class FightersManager : public GameObject, public Observer {
@@ -18,13 +20,14 @@ public:
 	Fighter* getFighter();
 	virtual void receive(Message* msg);
 private:
+	int counter = 0;
+	vector<GunInputComponent*> gunComponents;
+	GunInputComponent gunComp;
 	bool badgeState = false;
 	Fighter fighter_;
 	CircularMotionPhysics circulrMotoionComp_;
 	AccelerationInputComponent accelerationComp_;
 	ImageRenderer renderComp_ ;
 	RotationInputComponent rotationComp_;
-	GunInputComponent gunComp1_;
-	GunInputComponent gunComp2_;
 	BadgeRenderer badgeRenderer_;
 };
