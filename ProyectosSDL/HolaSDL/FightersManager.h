@@ -6,8 +6,6 @@
 #include "ImageRenderer.h"
 #include "RotationInputComponent.h"
 #include "GunInputComponent.h"
-#include "MultiGunComponent.h"
-#include "SuperGunComponent.h"
 #include "BadgeRenderer.h"
 
 class FightersManager : public GameObject, public Observer {

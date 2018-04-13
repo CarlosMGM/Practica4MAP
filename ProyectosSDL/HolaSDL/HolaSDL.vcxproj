@@ -100,7 +100,6 @@
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="LivesRenderer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MultiGunComponent.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Observable.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -122,7 +121,6 @@
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="StarTrekBulletManager.cpp" />
     <ClCompile Include="StarWarsBulletsManager.cpp" />
-    <ClCompile Include="SuperGunComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
@@ -157,7 +155,6 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="LivesRenderer.h" />
     <ClInclude Include="Messages.h" />
-    <ClInclude Include="MultiGunComponent.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Observable.h" />
     <ClInclude Include="Observer.h" />
@@ -180,7 +177,6 @@
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StarTrekBulletManager.h" />
     <ClInclude Include="StarWarsBulletsManager.h" />
-    <ClInclude Include="SuperGunComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>

@@ -3,11 +3,13 @@
 
 
 FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameObject(game), fighter_(game, 1), accelerationComp_(SDLK_q, SDLK_w, 0.5, 5, 0.8),
-	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::Airplanes)), rotationComp_ (5, SDLK_o, SDLK_p), badgeRenderer_(game_,1,1), gunComp(5, SDLK_SPACE)
+	renderComp_(game->getResources()->getImageTexture(Resources::ImageId::Airplanes)), rotationComp_ (5, SDLK_o, SDLK_p), badgeRenderer_(game_,1,1), gunComp(5, 0, SDLK_SPACE)
 {
-	gunComponents.push_back(new SuperGunComponent(5, SDLK_SPACE));
-	gunComponents.push_back(new GunInputComponent(1000, SDLK_SPACE));
-	gunComponents.push_back(new MultiGunComponent(5, SDLK_SPACE));
+	gunComponents.push_back(new GunInputComponent(1000, 0, SDLK_SPACE));
+	gunComponents.push_back(new GunInputComponent(5, 1, SDLK_SPACE));
+	gunComponents.push_back(new GunInputComponent(5, 2, SDLK_SPACE));
+	
+	
 
 	gunComp.registerObserver(bulletsManager);
 	for ( int i = 0;  i < gunComponents.size(); i++)

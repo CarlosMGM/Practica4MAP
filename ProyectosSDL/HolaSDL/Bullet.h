@@ -6,6 +6,7 @@ public:
 	virtual ~Bullet();
 	void setFighterId(int id);
 	int getFighterId();
+	void setSuper(bool super);
 	bool isSuper();
 private:
 	int fighterId_;

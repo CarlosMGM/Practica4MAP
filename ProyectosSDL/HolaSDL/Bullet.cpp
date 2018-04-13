@@ -19,6 +19,10 @@ int Bullet::getFighterId() {
 	return fighterId_;
 }
 
+void Bullet::setSuper(bool super) {
+	super_ = super;
+}
+
 bool Bullet::isSuper()
 {
 	return super_;

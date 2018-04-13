@@ -13,7 +13,7 @@ public:
 	virtual void render(Uint32 time);
 	virtual std::vector<Bullet*>& getBullets();
 private:
-	Bullet* getBullet(bool super = false);
+	Bullet* getBullet();
 	virtual void receive(Message* msg);
 	virtual void shoot(Fighter* owner, Vector2D position, Vector2D velocity, bool super = false);
 

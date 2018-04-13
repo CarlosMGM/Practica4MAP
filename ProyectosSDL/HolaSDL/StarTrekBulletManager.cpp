@@ -43,7 +43,7 @@ std::vector<Bullet*>& StarTrekBulletManager::getBullets() {
 	return bullets_;
 }
 
-Bullet* StarTrekBulletManager::getBullet(bool super) {
+Bullet* StarTrekBulletManager::getBullet() {
 	int i = 0;
 	while (i < bullets_.size())
 	{
@@ -52,7 +52,7 @@ Bullet* StarTrekBulletManager::getBullet(bool super) {
 		i++;
 	}
 
-	Bullet* bullet = new Bullet(game_, super);
+	Bullet* bullet = new Bullet(game_);
 	bullet->addPhysicsComponent(& bulletPhysics_);
 	bullet->addRenderComponent(& bulletRenderer_);
 	bullets_.push_back(bullet);
@@ -60,8 +60,9 @@ Bullet* StarTrekBulletManager::getBullet(bool super) {
 }
 
 void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D velocity, bool super){
-	Bullet* bullet = getBullet(super);
+	Bullet* bullet = getBullet();
 	bullet->setActive(true);
+	bullet->setSuper(super);
 	position = position - Vector2D(bullet->getWidth()/2, bullet->getHeight()/2);
 	bullet->setPosition(position);
 	bullet->setVelocity(velocity);
@@ -97,7 +98,7 @@ void StarTrekBulletManager::receive(Message* msg) {
 	case FIGHTER_SHOOT: {
  		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
 		if (p->superBullet_)
-			shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_, true);
+ 			shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_, true);
 		else
 			shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_); 
 	}
