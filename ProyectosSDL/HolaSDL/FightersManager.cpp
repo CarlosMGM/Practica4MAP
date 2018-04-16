@@ -27,6 +27,10 @@ FightersManager::FightersManager(SDLGame* game, Observer* bulletsManager): GameO
 
 FightersManager::~FightersManager()
 {
+	for each (GunInputComponent* var in gunComponents)
+	{
+		delete var;
+	}
 }
 
 void FightersManager::handleInput(Uint32 time, const SDL_Event& event) {
