@@ -42,11 +42,14 @@ bool GameManager::isRunning() const {
 void GameManager::setRunning(bool running) {
 	running_ = running;
 	if (running) {
+		this->delInputComponent(&gameCtrl_);
 		this->addRenderComponent(&gameMsg_);
 		lives_ = 3;
 	}
-	else
+	else {
+		this->addInputComponent(&gameCtrl_);
 		this->delRenderComponent(&gameMsg_);
+	}
 }
 
 int GameManager::getScore() const {

@@ -8,10 +8,8 @@ asteroidImage_(ImageRenderer(game->getResources()->getImageTexture(Resources::Im
 
 
 AsteroidsManager::~AsteroidsManager(){
-	while (!asteroids_.empty()) {
-		delete asteroids_.back();
-		asteroids_.pop_back();
-	}
+	for each (Asteroid* var in asteroids_)
+		delete var;
 }
 
 void AsteroidsManager::handleInput(Uint32 time, const SDL_Event & event)
@@ -49,17 +47,13 @@ void AsteroidsManager::receive(Message * msg)
 		if (ast->getGenerations() > 0) {
 			int n = rand() % 3 + 1;
 			for (int i = 0; i < n; i++) {
-				asteroids_.push_back(new Asteroid(game_));
-				asteroids_.back()->setActive(true);
-				asteroids_.back()->addPhysicsComponent(&rotationPhysics_);
-				asteroids_.back()->addPhysicsComponent(&circularPhysics_);
-				asteroids_.back()->addRenderComponent(&asteroidImage_);
-				asteroids_.back()->setGenerations(ast->getGenerations()-1);
-				asteroids_.back()->setPosition(ast->getPosition());
+				Asteroid* aux = getAsteroid();
+				aux->setGenerations(ast->getGenerations()-1);
+				aux->setPosition(ast->getPosition());
 				double ang = rand();
 				Vector2D v = ast->getVelocity();
 				v.rotate(ang);
-				asteroids_.back()->setVelocity(v);
+				aux->setVelocity(v);
 			}
 			numOfAsteroids_ += n;
 		}
@@ -77,15 +71,17 @@ Asteroid * AsteroidsManager::getAsteroid()
 	int i = 0;
 	while (i < asteroids_.size() && asteroids_[i]->isActive())
 		i++;
-	if (i < asteroids_.size())
+	if (i < asteroids_.size()) {
+		asteroids_[i]->setActive(true);
 		return asteroids_[i];
+
+	}
 	else {
 		asteroids_.push_back(new Asteroid(game_));
-		asteroids_.back()->setActive(false);
+		asteroids_.back()->setActive(true);
 		asteroids_.back()->addPhysicsComponent(&rotationPhysics_);
 		asteroids_.back()->addPhysicsComponent(&circularPhysics_);
 		asteroids_.back()->addRenderComponent(&asteroidImage_);
-		asteroids_.back()->setGenerations(rand() % 2 + 1);
 		return asteroids_.back();
 	}
 }
@@ -97,12 +93,8 @@ void AsteroidsManager::initAsteroids()
 	numOfAsteroids_ = rand() % 5 + 5;
 	for (int i = 0; i < numOfAsteroids_; i++) {
 		Uint32 x = 0, y = 0;
-		asteroids_.push_back(new Asteroid(game_));
-		asteroids_.back()->setActive(true);
-		asteroids_.back()->addPhysicsComponent(&rotationPhysics_);
-		asteroids_.back()->addPhysicsComponent(&circularPhysics_);
-		asteroids_.back()->addRenderComponent(&asteroidImage_);
-		asteroids_.back()->setGenerations(rand() % 2 + 1);
+		Asteroid*ast = getAsteroid();
+		ast->setGenerations(rand() % 2 + 1);
 		int borde = rand()%4;
 		if (borde == 2)
 			x = game_->getWindowWidth();
@@ -113,9 +105,9 @@ void AsteroidsManager::initAsteroids()
 			y = rand()% game_->getWindowHeight();
 		else
 			x = rand()%game_->getWindowWidth();
-		asteroids_.back()->setPosition(Vector2D(x, y));
+		ast->setPosition(Vector2D(x, y));
 		double vx = max(static_cast<double>(rand() % MAX_VEL), 0.5);
 		double vy = max(static_cast<double>(rand() % MAX_VEL), 0.5);
-		asteroids_.back()->setVelocity(Vector2D(vx, vy));
+		ast->setVelocity(Vector2D(vx, vy));
 	}
 }
