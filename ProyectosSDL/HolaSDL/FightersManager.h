@@ -18,8 +18,7 @@ public:
 	Fighter* getFighter();
 	virtual void receive(Message* msg);
 private:
-	int counter = 0;
-	vector<GunInputComponent*> gunComponents;
+	GunInputComponent gunComp2;
 	GunInputComponent gunComp;
 	bool badgeState = false;
 	Fighter fighter_;

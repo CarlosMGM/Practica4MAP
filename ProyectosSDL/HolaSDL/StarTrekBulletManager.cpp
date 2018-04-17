@@ -59,10 +59,9 @@ Bullet* StarTrekBulletManager::getBullet() {
 	return bullet;
 }
 
-void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D velocity, bool super){
+void StarTrekBulletManager::shoot(Fighter* owner, Vector2D position, Vector2D velocity){
 	Bullet* bullet = getBullet();
 	bullet->setActive(true);
-	bullet->setSuper(super);
 	position = position - Vector2D(bullet->getWidth()/2, bullet->getHeight()/2);
 	bullet->setPosition(position);
 	bullet->setVelocity(velocity);
@@ -86,8 +85,7 @@ void StarTrekBulletManager::receive(Message* msg) {
 		break;
 	case BULLET_ASTROID_COLLISION: {
 		BulletAstroidCollision* m = static_cast<BulletAstroidCollision*>(msg);
- 		if(!m->bullet_->isSuper())
-			m->bullet_->setActive(false); 
+		m->bullet_->setActive(false); 
 	}
 								   break;
 	case BULLET_FIGHTER_COLLISION: {
@@ -97,9 +95,6 @@ void StarTrekBulletManager::receive(Message* msg) {
 			break;
 	case FIGHTER_SHOOT: {
  		FighterIsShooting* p = static_cast<FighterIsShooting*>(msg);
-		if (p->superBullet_)
- 			shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_, true);
-		else
 			shoot(p->fighter_, p->bulletPosition_, p->bulletVelocity_); 
 	}
 			break;

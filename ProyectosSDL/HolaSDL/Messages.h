@@ -56,14 +56,13 @@ struct AstroidFighterCollision: Message {
 
 struct FighterIsShooting: Message {
 	FighterIsShooting(Fighter* fighter, Vector2D bulletPosition,
-			Vector2D bulletVelocity, bool superBullet = false) :
+			Vector2D bulletVelocity) :
 			Message(FIGHTER_SHOOT), fighter_(fighter), bulletPosition_(
-					bulletPosition), bulletVelocity_(bulletVelocity), superBullet_(superBullet) {
+					bulletPosition), bulletVelocity_(bulletVelocity) {
 	}
 
 	Fighter* fighter_;
 	Vector2D bulletPosition_;
 	Vector2D bulletVelocity_;
-	bool superBullet_;
 };
 #endif /* MESSAGES_H_ */

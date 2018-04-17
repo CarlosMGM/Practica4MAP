@@ -15,7 +15,7 @@ public:
 private:
 	Bullet* getBullet();
 	virtual void receive(Message* msg);
-	virtual void shoot(Fighter* owner, Vector2D position, Vector2D velocity, bool super = false);
+	virtual void shoot(Fighter* owner, Vector2D position, Vector2D velocity);
 
 
 	std::vector<Bullet*> bullets_;
