@@ -12,6 +12,7 @@ void Server::start(int port) {
 
 	// some types of message that we use later
 	ConnectedMsg msg_connected = { 0 };
+	DisconnectedMsg msg_disconnected = { 0 };
 	Message* msg;
 
 	// a variable that represents the address -- in this case only the port
@@ -89,6 +90,11 @@ void Server::start(int port) {
 						// we disconnect the client
 						SDLNet_TCP_DelSocket(socketSet,
 								clients_[i]->getSocket()); // remove it from set -- very important!!
+						for (int j = 0; j < clients_.size(); j++) {
+							if (i != j && clients_[j] != nullptr) {
+								clients_[j]->sendMessage(&msg_disconnected);
+							}
+						}
 						clients_[i]->close();
 						delete clients_[i];
 						clients_[i] = nullptr;

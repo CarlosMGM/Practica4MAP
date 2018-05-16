@@ -5,6 +5,7 @@
 
 enum MessageId {
 	CONNECTED,
+	DISCONNECTED,
 	JOINING_GAME,
 	PLAYER_INFO,
 	GAME_IS_READY,
@@ -31,6 +32,13 @@ struct Message {
 struct ConnectedMsg: Message {
 	ConnectedMsg(Uint8 clientId) :
 			Message(CONNECTED, sizeof(ConnectedMsg)), clientId_(clientId) {
+	}
+	Uint8 clientId_;
+};
+
+struct DisconnectedMsg : Message {
+	DisconnectedMsg(Uint8 clientId) :
+		Message(DISCONNECTED, sizeof(DisconnectedMsg)), clientId_(clientId) {
 	}
 	Uint8 clientId_;
 };

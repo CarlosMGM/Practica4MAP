@@ -43,6 +43,7 @@ private:
 	void getReady();
 	void startGame();
 	void endGame();
+	void pauseGame();
 	void killPlayer(Uint8 id);
 	void checkIfGameIsOver();
 

@@ -54,6 +54,9 @@ void GameManager::receive(Message* msg) {
 	case BULLET_FIGHTER_COLLISION:
 		killPlayer(static_cast<BulletFighterCollisionMsg*>(msg)->fighterId_);
 		break;
+	case DISCONNECTED:
+		pauseGame();
+		break;
 	}
 }
 
@@ -97,6 +100,14 @@ void GameManager::endGame() {
 	if (state_ == RUNNING) {
 		state_ = OVER;
 	}
+}
+
+void GameManager::pauseGame()
+{
+	state_ = WAITING;
+
+	Message msg = { GAME_OVER };
+	send(&msg);
 }
 
 void GameManager::startGame() {

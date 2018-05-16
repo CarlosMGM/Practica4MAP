@@ -19,5 +19,6 @@ public:
 private:
 	void error();
 	vector<ClientConnection*> clients_;
+	bool disconnect = false;
 };
 
