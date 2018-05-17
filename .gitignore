@@ -39,3 +39,8 @@ Release/
 HolaSDLDebug*
 
 P4TPV_G22\.zip
+*.vcxproj
+*.db
+ProyectosSDL/README.txt
+*.vcxproj
+ProyectosSDL/HolaSDL/HolaSDL.vcxproj
