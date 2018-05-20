@@ -36,9 +36,31 @@ void CollisionManager::update(Uint32 time) {
 						break; // it can kill only one fighter
 					}
 				}
+
+				for (Asteroid * a : asteroids) {
+					if (a->isActive() && Collisions::collidesWithRotation(b, a)) {
+						BulletAsteroidCollisionMsg m = { b->getBulletId(),
+							b->getFighterId(), a->getAsteroidId() };
+						send(&m);
+						break;
+					}
+				}
 			}
 		}
 	}
+
+	for (Fighter *f : fighters) {
+		if (f != nullptr && f->isActive()) {
+			for (Asteroid * a : asteroids) {
+				if (a->isActive() && Collisions::collidesWithRotation(f, a)) {
+					AsteroidFighterCollisionMsg m = { a->getAsteroidId(), f->getId() };
+					send(&m);
+					break;
+				}
+			}
+		}
+	}
+	
 }
 
 void CollisionManager::render(Uint32 time) {

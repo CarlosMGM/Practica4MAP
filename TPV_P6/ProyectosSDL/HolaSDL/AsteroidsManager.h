@@ -2,12 +2,14 @@
 
 #include "GameObject.h"
 #include "ImageRenderer.h"
-#include "CircularMotionPhysics.h"
+#include "InBoundsMotionPhysics.h"
 #include "RotationPhysics.h"
 #include "Observer.h"
 #include "SkeletonRenderer.h"
 #include "Observable.h"
 #include "Asteroid.h"
+
+#define CREATION_INTERVAL 10000
 
 /*
  *
@@ -26,9 +28,18 @@ public:
 
 private:
 
-
+	bool running = false;
+	ImageRenderer asteroidImage_;
+	RotationPhysics rotationPhysics_;
+	InBoundsMotionPhysics inBoundsPhysics_;
+	Uint32 lastTimeNewAsteroid;
 	vector<Asteroid*> asteroids_;
 
 
+	void addAsteroid();
+	Asteroid * newAsteroid();
+	Asteroid * getAsteroid();
+	void sendAsteroidState(Asteroid * ast);
+	void updateAsteroidState(AsteroidStateMsg * msg);
 };
 

@@ -13,7 +13,10 @@ enum MessageId {
 	GAME_OVER,
 	FIGHETR_STATE,
 	FIGHTER_SHOOT,
-	BULLET_FIGHTER_COLLISION
+	BULLET_FIGHTER_COLLISION,
+	BULLET_ASTEROID_COLLISION,
+	ASTEROID_FIGHTER_COLLISION,
+	ASTEROID_STATE
 };
 
 typedef Uint16 header_t_;
@@ -77,12 +80,27 @@ struct FighterStateMsg: Message {
 	double height_;
 };
 
+struct AsteroidStateMsg : Message {
+	AsteroidStateMsg(Uint8 asteroidId, Vector2D pos, Vector2D dir, Vector2D vel,
+		double width, double height) :
+		Message(ASTEROID_STATE, sizeof(AsteroidStateMsg)), asteroidId_(
+			asteroidId), pos_(pos), dir_(dir), vel_(vel), width_(width), height_(
+				height) {
+	}
+	Uint8 asteroidId_;
+	Vector2D pos_;
+	Vector2D dir_;
+	Vector2D vel_;
+	double width_;
+	double height_;
+};
+
 
 struct FighterIsShootingMsg: Message {
 	FighterIsShootingMsg(Uint8 fighterId, Vector2D bulletPosition,
 			Vector2D bulletVelocity) :
-			Message(FIGHTER_SHOOT, sizeof(FighterIsShootingMsg)), fighterId_(
-					fighterId), bulletPosition_(bulletPosition), bulletVelocity_(
+			Message(FIGHTER_SHOOT, sizeof(FighterIsShootingMsg)),
+		bulletPosition_(bulletPosition), bulletVelocity_(
 					bulletVelocity) {
 	}
 	Uint8 fighterId_;
@@ -102,6 +120,26 @@ struct BulletFighterCollisionMsg: Message {
 	Uint8 bulletOwnerId_;
 };
 
+struct BulletAsteroidCollisionMsg : Message {
+	BulletAsteroidCollisionMsg(Uint16 bulletId, Uint8 fbulletId, Uint8 asteroidId) :
+		Message(BULLET_ASTEROID_COLLISION, sizeof(BulletAsteroidCollisionMsg)), asteroidId_(
+			asteroidId), bulletId_(bulletId), bulletOwnerId_(fbulletId) {
+	}
+	Uint8 asteroidId_;
+	// the following uniquely identify a bullet
+	Uint16 bulletId_;
+	Uint8 bulletOwnerId_;
+};
+
+
+struct AsteroidFighterCollisionMsg : Message {
+	AsteroidFighterCollisionMsg(Uint8 asteroidId, Uint8 fighterId) :
+		Message(ASTEROID_FIGHTER_COLLISION, sizeof(AsteroidFighterCollisionMsg)), asteroidId_(
+			asteroidId), fighterId_(fighterId) {
+	}
+	Uint8 asteroidId_;
+	Uint8 fighterId_;
+};
 
 // this value should be bigger than the size of all messages
 #define MAX_MSG_SIZE 1000

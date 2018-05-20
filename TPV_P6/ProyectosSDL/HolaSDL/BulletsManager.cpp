@@ -95,20 +95,26 @@ void BulletsManager::disableBullet(Uint16 id, Uint8 fighterId) {
 
 void BulletsManager::receive(Message* msg) {
 	switch (msg->mType_) {
-	case GAME_OVER:
-		disableBullets();
-		break;
-	case FIGHTER_SHOOT: {
-		FighterIsShootingMsg* m = static_cast<FighterIsShootingMsg*>(msg);
-		shoot(m->fighterId_, m->bulletPosition_, m->bulletVelocity_);
-		break;
-	}
-	case BULLET_FIGHTER_COLLISION: {
-		BulletFighterCollisionMsg* m =
+		case GAME_OVER:
+			disableBullets();
+			break;
+		case FIGHTER_SHOOT: {
+			FighterIsShootingMsg* m = static_cast<FighterIsShootingMsg*>(msg);
+			shoot(m->fighterId_, m->bulletPosition_, m->bulletVelocity_);
+			break;
+		}
+		case BULLET_FIGHTER_COLLISION: {
+			BulletFighterCollisionMsg* m =
 				static_cast<BulletFighterCollisionMsg*>(msg);
-		disableBullet(m->bulletId_, m->bulletOwnerId_);
-		break;
-	}
+			disableBullet(m->bulletId_, m->bulletOwnerId_);
+			break;
+		}
+		case BULLET_ASTEROID_COLLISION: {
+			BulletAsteroidCollisionMsg* m = 
+				static_cast<BulletAsteroidCollisionMsg*>(msg);
+			disableBullet(m->bulletId_, m->bulletOwnerId_);
+			break;
+		}
 	}
 }
 

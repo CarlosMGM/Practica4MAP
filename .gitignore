@@ -33,9 +33,11 @@
 #Files and Folders
 Debug/
 Release/
+bin/
 .vs/
 *.vcxpro*
 *.sln
 HolaSDLDebug*
 
 P4TPV_G22\.zip
+*.exe
