@@ -42,7 +42,7 @@ void AsteroidsManager::receive(Message* msg) {
 	case GAME_START:
 		if (game_->isMasterClient()) {
 			running = true;
-			lastTimeNewAsteroid = SDL_GetTicks();
+			lastTimeNewAsteroid = 0;
 		}
 		break;
 	case ASTEROID_STATE:
