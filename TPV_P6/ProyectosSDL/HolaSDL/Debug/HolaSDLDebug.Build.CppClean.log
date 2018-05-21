@@ -20,7 +20,6 @@ c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\asteroidsmanager.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\asteroidsgame.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\asteroid.obj
-c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\server.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\sdlgame.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\rotationphysics.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\resources.obj
@@ -34,6 +33,7 @@ c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\music.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\main.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\inputcomponent.obj
+c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\inboundsmotionphysics.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\imagerenderer.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\guninputcomponent.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\gamestatusrenderer.obj
@@ -44,13 +44,12 @@ c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\texture.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\soundeffect.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\skeletonrenderer.obj
-c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\inboundsmotionphysics.obj
+c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\server.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\bin\holasdldebug.lib
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\bin\holasdldebug.exp
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\bin\holasdldebug.ilk
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\bin\holasdldebug.exe
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\bin\holasdldebug.pdb
-c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\ex1.obj
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\holasdl.tlog\cl.command.1.tlog
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\holasdl.tlog\cl.read.1.tlog
 c:\users\saxorkh\documents\github\practica4tpv\tpv_p6\proyectossdl\holasdl\debug\holasdl.tlog\cl.write.1.tlog

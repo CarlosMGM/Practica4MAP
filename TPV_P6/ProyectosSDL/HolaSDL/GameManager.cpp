@@ -54,6 +54,8 @@ void GameManager::receive(Message* msg) {
 	case BULLET_FIGHTER_COLLISION:
 		killPlayer(static_cast<BulletFighterCollisionMsg*>(msg)->fighterId_);
 		break;
+	case ASTEROID_FIGHTER_COLLISION:
+		killPlayer(static_cast<AsteroidFighterCollisionMsg*>(msg)->fighterId_);
 	case DISCONNECTED:
 		pauseGame();
 		break;

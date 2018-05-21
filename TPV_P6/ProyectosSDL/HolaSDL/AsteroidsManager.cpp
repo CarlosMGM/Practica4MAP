@@ -21,7 +21,7 @@ void AsteroidsManager::handleInput(Uint32 time, const SDL_Event& event) {
 
 void AsteroidsManager::update(Uint32 time) {
 	if (running && (time - lastTimeNewAsteroid) > CREATION_INTERVAL) {
-		newAsteroid();
+		addAsteroid();
 		lastTimeNewAsteroid = time;
 	}
 	for (Asteroid* a : asteroids_)
@@ -84,6 +84,7 @@ Asteroid * AsteroidsManager::newAsteroid()
 {
 	asteroids_.push_back(new Asteroid(game_));
 	asteroids_.back()->setActive(true);
+	asteroids_.back()->setAsteroidId(asteroids_.size() - 1);
 	asteroids_.back()->addPhysicsComponent(&rotationPhysics_);
 	asteroids_.back()->addPhysicsComponent(&inBoundsPhysics_);
 	asteroids_.back()->addRenderComponent(&asteroidImage_);
