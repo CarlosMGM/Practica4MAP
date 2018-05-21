@@ -56,6 +56,7 @@ void GameManager::receive(Message* msg) {
 		break;
 	case ASTEROID_FIGHTER_COLLISION:
 		killPlayer(static_cast<AsteroidFighterCollisionMsg*>(msg)->fighterId_);
+		break;
 	case DISCONNECTED:
 		pauseGame();
 		break;
@@ -76,13 +77,13 @@ void GameManager::registerPlayer(Uint8 id) {
 		players_[id].alive_ = true;
 		numOfConnectedPlayers_++;
 
-		if (getGame()->isMasterClient()) {
+		//if (getGame()->isMasterClient()) {
 			if (numOfConnectedPlayers_ == NUM_OF_PLAYERS) {
 				Message msg = { GAME_IS_READY };
 				send(&msg);
 				getReady();
 			}
-		}
+		//}
 
 	}
 }
