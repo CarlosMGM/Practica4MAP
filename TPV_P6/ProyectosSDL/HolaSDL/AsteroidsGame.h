@@ -35,6 +35,8 @@ private:
 	std::vector<GameObject*> actors_;
 	char* host_;
 	int port_;
+	Container background_;
+	ImageRenderer space_;
 
 	NetworkMessenger networkMessenger_;
 	GameManager gameManager_;

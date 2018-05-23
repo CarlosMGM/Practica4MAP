@@ -27,7 +27,8 @@ public:
 		Star	,
 		Astroid,
 		ExplosionImage,
-		Badges
+		Badges,
+		Space
 
 	};
 

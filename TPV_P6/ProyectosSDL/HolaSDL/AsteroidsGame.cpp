@@ -11,7 +11,9 @@ AsteroidsGame::AsteroidsGame(char* host, int port) :
 		fightersManager_(this, &networkMessenger_, &bulletsManager_), //
 		asteroidsManager_(this), //
 		collisionManager_(this, &bulletsManager_, &fightersManager_,
-				&asteroidsManager_) //
+				&asteroidsManager_), //
+	background_(this),
+	space_(getResources()->getImageTexture(Resources::ImageId::Space))
 {
 	exit_ = false;
 	initGame();
@@ -37,6 +39,11 @@ void AsteroidsGame::initGame() {
 	client_id = static_cast<ConnectedMsg*>(msg)->clientId_;
 	cout << "Connected with ID : " << (int) client_id << endl;
 
+	//background_.addRenderComponent(&space_);
+	background_.setPosition({ 0,0 });
+	background_.setHeight(getWindowHeight());
+	background_.setWidth(getWindowWidth());
+	
 	/** TODO
 	 *
 	 *  Add the asteroidsManager_ to the game
@@ -129,9 +136,11 @@ void AsteroidsGame::update(Uint32 time) {
 }
 
 void AsteroidsGame::render(Uint32 time) {
-	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00AAAAFF));
+	SDL_SetRenderDrawColor(getRenderer(), COLOR(0x00000000));
 	SDL_RenderClear(getRenderer());
 
+
+	background_.render(time);
 	for (GameObject* o : actors_) {
 		o->render(time);
 	}
