@@ -58,7 +58,7 @@ void GameManager::receive(Message* msg) {
 		killPlayer(static_cast<AsteroidFighterCollisionMsg*>(msg)->fighterId_);
 		break;
 	case DISCONNECTED:
-		pauseGame();
+		pauseGame(static_cast<DisconnectedMsg*>(msg)->clientId_);
 		break;
 	}
 }
@@ -105,8 +105,14 @@ void GameManager::endGame() {
 	}
 }
 
-void GameManager::pauseGame()
+void GameManager::pauseGame(Uint8 id)
 {
+	if (players_[id].alive_) {
+		players_[id].alive_ = false;
+		alivePlayers_--;
+	}
+		players_[id].connected_ = false;
+		numOfConnectedPlayers_--;
 	state_ = WAITING;
 
 	Message msg = { GAME_OVER };

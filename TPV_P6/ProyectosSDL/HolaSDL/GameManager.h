@@ -43,11 +43,11 @@ private:
 	void getReady();
 	void startGame();
 	void endGame();
-	void pauseGame();
+	void pauseGame(Uint8 id);
 	void killPlayer(Uint8 id);
 	void checkIfGameIsOver();
 
-	static int const NUM_OF_PLAYERS = 2;
+	static int const NUM_OF_PLAYERS = 3;
 
 	GameStatusRenderer gameMsgRenderer_;
 	GameCtrlInputComponent gameCtrlInputComponent_;

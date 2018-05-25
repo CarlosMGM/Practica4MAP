@@ -1,1 +1,9 @@
-﻿
+﻿  AsteroidsGame.cpp
+  ConnectedPlayersRenderer.cpp
+  GameCtrlInputComponent.cpp
+  GameManager.cpp
+  GameStatusRenderer.cpp
+  PlayersInfoRenderer.cpp
+  main.cpp
+  Generando código...
+LINK : fatal error LNK1168: no se puede abrir C:\Users\Lluís C\Documents\Projects\Practica4TPV\TPV_P6\ProyectosSDL\bin\HolaSDLDebug.exe para escritura

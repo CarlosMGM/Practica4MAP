@@ -92,7 +92,7 @@ void Server::start(int port) {
 								clients_[i]->getSocket()); // remove it from set -- very important!!
 						for (int j = 0; j < clients_.size(); j++) {
 							if (i != j && clients_[j] != nullptr) {
-								clients_[j]->sendMessage(&msg_disconnected);
+								clients_[j]->sendMessage(&DisconnectedMsg(i));
 							}
 						}
 						clients_[i]->close();
